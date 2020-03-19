@@ -1,0 +1,10 @@
+bases:
+  - ../../basic
+
+patchesStrategicMerge:
+  - details.yaml
+
+secretGenerator:
+  - name: my-secret
+    literals:
+      - my-secret=my-secret-value

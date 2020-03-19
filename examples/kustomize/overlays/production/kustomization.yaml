@@ -1,0 +1,5 @@
+bases:
+  - ../../basic
+
+patchesStrategicMerge:
+  - productpage-scale-up.yaml

@@ -1,0 +1,17 @@
+bases:
+  - ../../basic
+
+patchesStrategicMerge:
+  - details.yaml
+
+configMapGenerator:
+  - name: my-config
+    literals:
+      - my-config=my-config-value
+
+generatorOptions:
+  disableNameSuffixHash: true
+  labels:
+    example: generator-options
+  annotations:
+    example: generator-options
