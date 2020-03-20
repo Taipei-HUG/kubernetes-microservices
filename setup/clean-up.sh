@@ -9,11 +9,11 @@ kubectl delete deploy --all
 
 sleep 15 
 
-helm delete istio-init --purge
+helm delete istio-init
 
 sleep 15
 
-helm delete istio --purge
+helm delete istio
 
 del=1
 # Remove EKS cluster
