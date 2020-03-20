@@ -1,8 +1,8 @@
 #!/bin/sh
 
-aws ecr delete-repository --repository-name eks-workshop-bookinfo-productpage --force
-aws ecr delete-repository --repository-name eks-workshop-bookinfo-ratings --force
-aws ecr delete-repository --repository-name eks-workshop-bookinfo-details --force
+aws ecr delete-repository --repository-name k8s-m-bookinfo-productpage --force
+aws ecr delete-repository --repository-name k8s-m-bookinfo-ratings --force
+aws ecr delete-repository --repository-name k8s-m-bookinfo-details --force
 
 kubectl delete svc --all
 kubectl delete deploy --all
