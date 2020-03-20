@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "start": "node ratings.js"
+  },
+  "dependencies": {
+    "httpdispatcher": "1.0.0",
+    "mongodb": "3.3.3",
+    "mysql2": "2.0.0",
+    "aws-sdk": "2.566.0"
+  }
+}
