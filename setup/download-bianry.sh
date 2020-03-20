@@ -26,6 +26,10 @@ curl --silent -Lo kubebox https://github.com/astefanutti/kubebox/releases/downlo
 sudo mv kubebox /usr/local/bin
 echo 'kubebox Done.'
 
+curl --silent --location "https://github.com/pulumi/kubespy/releases/download/v0.5.1/kubespy-linux-amd64.tar.gz" | tar xz -C /tmp
+sudo mv /tmp/releases/kubespy-linux-amd64/kubespy /usr/local/bin
+echo 'kubespy Done.'
+
 curl --silent -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
 chmod +x skaffold
 sudo mv skaffold /usr/local/bin
