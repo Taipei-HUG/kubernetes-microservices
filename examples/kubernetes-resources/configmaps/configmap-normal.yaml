@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: main-app-config
+  labels:
+    app: main
+data:
+  port0: "9527"
+  simple-service-version: "v9.5.27"
+  health-min: "0"
+  health-max: "1000"

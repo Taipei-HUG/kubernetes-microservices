@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: label-example-2
+  labels:
+    owner: johndoe
+    env: prod
+spec:
+  containers:
+  - name: main-app
+    image: quay.io/cloudnativetw/simpleservice:v0.5.2
+    ports:
+    - containerPort: 9876

@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ic-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ic
+  template:
+    metadata:
+      labels:
+        app: ic
+    spec:
+      initContainers:
+      - name: msginit
+        image: quay.io/cloudnativetw/ubuntu:v0.1.0
+        command:
+        - "bin/bash"
+        - "-c"
+        - "echo INIT_DONE > /ic/this"
+        volumeMounts:
+        - mountPath: /ic
+          name: msg
+      containers:
+      - name: main
+        image: quay.io/cloudnativetw/ubuntu:v0.1.0
+        command:
+        - "bin/bash"
+        - "-c"
+        - "while true; do cat /ic/this; sleep 5; done"
+        volumeMounts:
+        - mountPath: /ic
+          name: msg
+      volumes:
+      - name: msg
+        emptyDir: {}

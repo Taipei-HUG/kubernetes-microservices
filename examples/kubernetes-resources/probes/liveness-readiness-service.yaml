@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: liveness-readiness
+  labels:
+    app: liveness-readiness
+spec:
+  selector:
+    app: liveness-readiness-test
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 9876
+    name: http
+  type: ClusterIP

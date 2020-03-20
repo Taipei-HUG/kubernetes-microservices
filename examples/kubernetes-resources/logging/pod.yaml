@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: logging
+spec:
+  containers:
+  - name: log-generator
+    image: quay.io/cloudnativetw/ubuntu:v0.1.0
+    command:
+      - "bin/bash"
+      - "-c"
+      - "while true; do echo $(date) | tee /dev/stderr; sleep 1; done"
+  securityContext:
+    runAsUser: 1001
