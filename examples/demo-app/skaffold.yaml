@@ -1,0 +1,58 @@
+apiVersion: skaffold/v1beta17
+kind: Config
+build:
+  artifacts:
+  - image: k8s-m-bookinfo-details
+    context: src/details
+  - image: k8s-m-bookinfo-productpage
+    context: src/productpage
+  - image: k8s-m-bookinfo-ratings
+    context: src/ratings
+  tagPolicy:
+    gitCommit: {}
+deploy:
+  helm:
+    releases:
+    - name: details
+      chartPath: helm-charts/details
+      values: 
+        image: k8s-m-bookinfo-details
+      imageStrategy:
+        helm: {}  
+    - name: productpage
+      chartPath: helm-charts/productpage
+      values:
+        image: k8s-m-bookinfo-productpage
+      imageStrategy:
+        helm: {}  
+    - name: reviews
+      chartPath: helm-charts/reviews
+    - name: ratings
+      chartPath: helm-charts/ratings
+      values:
+        image: k8s-m-bookinfo-ratings
+      imageStrategy:
+        helm: {}  
+    flags:
+      install:
+        - --atomic
+      upgrade:
+        - --reset-values
+        - --atomic
+portForward:
+  - resourceType: deployment
+    resourceName: details 
+    port: 9080
+    localPort: 8080
+  - resourceType: deployment
+    resourceName: productpage 
+    port: 9080
+    localPort: 8081
+  - resourceType: deployment
+    resourceName: ratings 
+    port: 9080
+    localPort: 8082
+  - resourceType: deployment
+    resourceName: reviews 
+    port: 9080
+    localPort: 8083
