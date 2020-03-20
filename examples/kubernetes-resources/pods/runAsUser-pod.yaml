@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
   - name: main-app
-    image: owensengoku/simpleservice:v0.5.1
+    image: cloudnativetw/simpleservice:v0.5.1
     ports:
     - containerPort: 9876
   securityContext:
