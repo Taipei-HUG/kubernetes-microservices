@@ -10,7 +10,7 @@ echo 'helm Done.'
 curl --silent -LO "https://storage.googleapis.com/kubernetes-release/release/v1.17.4/bin/$(uname -s)/amd64/kubectl" && chmod +x kubectl && mv kubectl ~/bin/
 echo 'kubectl Done.'
 
-curl --silent -Lo aws-iam-authenticator "https://amazon-eks.s3-us-west-2.amazonaws.com/1.11.5/2018-12-06/bin/$(uname 0s)/amd64/aws-iam-authenticator" && chmod +x aws-iam-authenticator
+curl --silent -Lo aws-iam-authenticator "https://amazon-eks.s3-us-west-2.amazonaws.com/1.11.5/2018-12-06/bin/$(uname -s)/amd64/aws-iam-authenticator" && chmod +x aws-iam-authenticator
 sudo mv aws-iam-authenticator /usr/bin
 echo 'aws-iam-authenticator Done.'
 
