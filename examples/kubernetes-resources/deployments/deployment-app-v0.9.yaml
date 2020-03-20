@@ -1,0 +1,20 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: main-app-deploy
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: main
+    spec:
+      containers:
+      - name: main-app
+        image: quay.io/cloudnativetw/simpleservice:v0.5.2
+        ports:
+        - containerPort: 9876
+        env:
+        - name: SIMPLE_SERVICE_VERSION
+          value: "v0.9.0"
+

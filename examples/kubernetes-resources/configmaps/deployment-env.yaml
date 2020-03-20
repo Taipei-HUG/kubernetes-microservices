@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: env-from-configmap
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: env-from-configmap
+    spec:
+      containers:
+      - name: env-from-configmap
+        image: quay.io/cloudnativetw/simpleservice:v0.5.2
+        ports:
+        - containerPort: 3000
+        env:
+        - name: SIMPLE_SERVICE_VERSION
+          valueFrom:
+            configMapKeyRef:
+              name: main-app-config
+              key: simple-service-version
+        - name: API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: main-app-secret
+              key: api-key
+
