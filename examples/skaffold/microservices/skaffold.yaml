@@ -1,0 +1,21 @@
+apiVersion: skaffold/v1beta15
+kind: Config
+build:
+  artifacts:
+    - image: quay.io/cloudnativetw/leeroy-web
+      context: ./leeroy-web/
+    - image: quay.io/cloudnativetw/leeroy-app
+      context: ./leeroy-app/
+  tagPolicy:
+      sha256: {}
+deploy:
+  kubectl:
+    manifests:
+      - ./leeroy-web/kubernetes/*
+      - ./leeroy-app/kubernetes/*
+portForward:
+  - resourceType: deployment
+    resourceName: leeroy-web
+    namespace: default
+    port: 8080
+    localPort: 9000
