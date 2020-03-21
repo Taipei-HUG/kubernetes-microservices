@@ -37,6 +37,7 @@ Common labels
 {{- define "details.labels" -}}
 helm.sh/chart: {{ include "details.chart" . }}
 {{ include "details.selectorLabels" . }}
+{{ include "details.istio.labels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -59,5 +60,12 @@ Create the name of the service account to use
     {{ default (include "details.fullname" .) .Values.serviceAccount.name }}
 {{- else -}}
     {{ default "default" .Values.serviceAccount.name }}
+{{- end -}}
+{{- end -}}
+
+{{- define "details.istio.labels" -}}
+{{- if .Values.global.istioEnabled -}}
+app: {{ include "details.name" . }}
+version: {{ default "v1" .Values.version }}
 {{- end -}}
 {{- end -}}

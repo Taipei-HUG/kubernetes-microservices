@@ -13,6 +13,7 @@ spec:
     metadata:
       labels:
         {{- include "productpage.selectorLabels" . | nindent 8 }}
+        {{- include "productpage.istio.labels" . | nindent 8 }}
     spec:
     {{- with .Values.imagePullSecrets }}
       imagePullSecrets:

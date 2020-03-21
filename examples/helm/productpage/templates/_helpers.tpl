@@ -37,6 +37,7 @@ Common labels
 {{- define "productpage.labels" -}}
 helm.sh/chart: {{ include "productpage.chart" . }}
 {{ include "productpage.selectorLabels" . }}
+{{ include "productpage.istio.labels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -59,5 +60,12 @@ Create the name of the service account to use
     {{ default (include "productpage.fullname" .) .Values.serviceAccount.name }}
 {{- else -}}
     {{ default "default" .Values.serviceAccount.name }}
+{{- end -}}
+{{- end -}}
+
+{{- define "productpage.istio.labels" -}}
+{{- if .Values.global.istioEnabled -}}
+app: {{ include "productpage.name" . }}
+version: {{ default "v1" .Values.version }}
 {{- end -}}
 {{- end -}}

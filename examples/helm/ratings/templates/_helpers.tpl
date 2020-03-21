@@ -49,6 +49,7 @@ Selector labels
 {{- define "ratings.selectorLabels" -}}
 app.kubernetes.io/name: {{ include "ratings.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
+{{ include "ratings.istio.labels" . }}
 {{- end -}}
 
 {{/*
@@ -59,5 +60,12 @@ Create the name of the service account to use
     {{ default (include "ratings.fullname" .) .Values.serviceAccount.name }}
 {{- else -}}
     {{ default "default" .Values.serviceAccount.name }}
+{{- end -}}
+{{- end -}}
+
+{{- define "ratings.istio.labels" -}}
+{{- if .Values.global.istioEnabled -}}
+app: {{ include "ratings.name" . }}
+version: {{ default "v1" .Values.version }}
 {{- end -}}
 {{- end -}}

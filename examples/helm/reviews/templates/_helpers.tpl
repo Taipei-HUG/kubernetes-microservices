@@ -61,3 +61,10 @@ Create the name of the service account to use
     {{ default "default" .Values.serviceAccount.name }}
 {{- end -}}
 {{- end -}}
+
+{{- define "reviews.istio.labels" -}}
+{{- if .Values.global.istioEnabled -}}
+app: {{ include "reviews.name" . }}
+version: {{ default "v1" .Values.version }}
+{{- end -}}
+{{- end -}}
