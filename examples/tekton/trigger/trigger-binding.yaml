@@ -1,0 +1,8 @@
+apiVersion: tekton.dev/v1alpha1
+kind: TriggerBinding
+metadata:
+  name: taipeihug-productpage-build-trigger-binding
+spec:
+  params:
+    - name: namespace
+      value: $(body.namespace)

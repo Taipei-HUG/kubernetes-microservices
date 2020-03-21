@@ -1,0 +1,11 @@
+apiVersion: tekton.dev/v1alpha1
+kind: EventListener
+metadata:
+  name: taipeihug-productpage-build-event-listener
+spec:
+  serviceAccountName: tekton-triggers-admin
+  triggers:
+    - bindings:
+      - name: taipeihug-productpage-build-trigger-binding
+      template:
+        name: taipeihug-productpage-build-trigger
