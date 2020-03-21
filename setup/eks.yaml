@@ -3,7 +3,7 @@ kind: ClusterConfig
 
 metadata:
   name: "@cluster_name@"
-  region: us-west-2
+  region: us-east-2
 
 nodeGroups:
   - name: ng0

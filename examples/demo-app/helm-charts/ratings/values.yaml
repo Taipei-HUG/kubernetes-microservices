@@ -67,12 +67,12 @@ env:
   #- name: DB_TYPE
   #  value: "mysql"
   #- name: MYSQL_DB_HOST
-  #  value: "xxx.xxx.us-west-2.rds.amazonaws.com"
+  #  value: "xxx.xxx.us-east-2.rds.amazonaws.com"
   #- name: MYSQL_DB_PORT
   #  value: "3306"
   #- name: MYSQL_DB_USER
   #  value: "irsa"
   #- name: AWS_REGION
-  #  value: "us-west-2"
+  #  value: "us-east-2"
   #- name: SERVICE_VERSION
   #  value: "v2"
