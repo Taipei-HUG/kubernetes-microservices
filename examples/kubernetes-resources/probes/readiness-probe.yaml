@@ -1,13 +1,18 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: ready
+  name: readiness-probe
 spec:
   containers:
   - name: main-app
     image: quay.io/cloudnativetw/simpleservice:v0.5.2
     ports:
     - containerPort: 9876
+    env:
+    - name: HEALTH_MIN
+      value: "1000"
+    - name: HEALTH_MAX
+      value: "2000"
     readinessProbe:
       initialDelaySeconds: 10
       httpGet:
