@@ -1,0 +1,9 @@
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: taipeihug-istio-productpage
+spec:
+  type: image
+  params:
+    - name: url
+      value: taipeihug/istio-productpage

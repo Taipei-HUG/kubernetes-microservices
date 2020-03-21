@@ -1,0 +1,24 @@
+apiVersion: tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  name: taipeihug-productpage-build-trigger
+spec:
+  params:
+    - name: namespace
+      description: The namespace to create the resources
+  resourcetemplates:
+    - apiVersion: tekton.dev/v1alpha1
+      kind: PipelineRun
+      metadata:
+        name: productpage-pipeline-build-image-$(uid)
+        namespace: $(params.namespace)
+      spec:
+        pipelineRef:
+          name: taipeihug-productpage-build-image-only
+        resources:
+          - name: git-repo
+            resourceRef:
+              name: git-repo-kubernetes-microservices
+          - name: docker-image
+            resourceRef:
+              name: taipeihug-istio-productpage
