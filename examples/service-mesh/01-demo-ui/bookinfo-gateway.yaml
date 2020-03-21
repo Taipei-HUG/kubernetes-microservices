@@ -38,4 +38,4 @@ spec:
     - destination:
         host: productpage
         port:
-          number: 9080
+          number: 80
