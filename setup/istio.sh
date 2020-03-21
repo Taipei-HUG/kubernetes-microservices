@@ -1,6 +1,8 @@
 
 #!/bin/sh
 
+kubectl apply -f istio-system.yaml
+
 helm repo add istio.io https://storage.googleapis.com/istio-release/releases/1.3.2/charts/
 
 helm upgrade --install istio-init --namespace istio-system istio.io/istio-init --wait
