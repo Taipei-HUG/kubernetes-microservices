@@ -3,7 +3,7 @@
 sudo cp -r ~/.kube /root/
 sudo cp -r ~/.aws /root/
 AccountID=$(aws sts get-caller-identity | jq .Account | tr -d '"')
-Registry=${AccountID}.dkr.ecr.us-west-2.amazonaws.com
+Registry=${AccountID}.dkr.ecr.us-east-2.amazonaws.com
 aws ecr create-repository --repository-name k8s-m-bookinfo-productpage
 aws ecr create-repository --repository-name k8s-m-bookinfo-ratings
 aws ecr create-repository --repository-name k8s-m-bookinfo-details
